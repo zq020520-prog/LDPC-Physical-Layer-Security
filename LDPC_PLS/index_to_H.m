@@ -1,4 +1,4 @@
-function H=index_to_H_10(index)
+function H=index_to_H(index)
 
             switch index
             case 1

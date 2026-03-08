@@ -1,4 +1,4 @@
-function small_inteval=calculate_small_inteval_10(index,CQI) 
+function small_inteval=calculate_small_inteval(index,CQI) 
 
             switch index
             case 1

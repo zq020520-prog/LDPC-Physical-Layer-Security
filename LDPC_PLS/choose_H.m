@@ -1,4 +1,4 @@
-function [index,H]=choose_H_10(CQI)
+function [index,H]=choose_H(CQI)
 
       if CQI < 0.1054
           H= load('H1.mat'); 

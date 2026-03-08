@@ -1,4 +1,4 @@
-function poly_info=crc_polynomial_output_10(index)
+function poly_info=crc_polynomial_output(index)
 
             switch index
             case 1

@@ -1,4 +1,4 @@
-function index=correct_data_channel_2(h,h_b,noiseVar,ha_index)
+function index=correct_data_channel(h,h_b,noiseVar,ha_index)
 
 
             % 转为格雷码（二进制字符串）

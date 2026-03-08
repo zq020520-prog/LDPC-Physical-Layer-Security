@@ -1,4 +1,4 @@
-function databits=crc_datagener_10(index)
+function databits=crc_datagener(index)
 
             switch index
             case 1

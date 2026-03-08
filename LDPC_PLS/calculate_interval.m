@@ -1,4 +1,4 @@
-function index=calculate_interval_10(CQI)
+function index=calculate_interval(CQI)
 
         if CQI < 0.1054
               index=1;
