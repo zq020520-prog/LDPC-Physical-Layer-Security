@@ -1,7 +1,5 @@
 function  rxbits=Bob(noisedsignal,noiseVar,h, a_small_inteval_temp,N)         
 
-            %error =1/sqrt(2)*(normrnd(0, sqrt(var)) + 1i * normrnd(0, sqrt(var)));
-            %h_b=h+error;
        
             pilot_symbols = [  1+1i,  1-1i,  -1+1i, -1-1i];
             pilot = repmat(pilot_symbols, 1, N/4); % 长度为 N
@@ -12,7 +10,7 @@ function  rxbits=Bob(noisedsignal,noiseVar,h, a_small_inteval_temp,N)
              % 接收信号
              rx_b = h * pilot + noise_b;
              h_b = sum(rx_b .* conj(pilot)) / sum(abs(pilot).^2);
-             h_b=h;
+
              CQI = abs(h_b)^2;
              index=calculate_interval(CQI);
             
@@ -28,10 +26,10 @@ function  rxbits=Bob(noisedsignal,noiseVar,h, a_small_inteval_temp,N)
                         index=index-1;
              end
              
-             u=[index,index-1,index+1,index-2,index+2];
+             u=[index,index-1,index+1];
              u = u(u > 0 & u < 11);
 
-             for i=1:1
+             for i=1:length(u)
 
                 index=u(i);
                 H_b=index_to_H(index);

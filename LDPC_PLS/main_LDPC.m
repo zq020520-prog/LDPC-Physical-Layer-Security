@@ -1,21 +1,17 @@
 delete(gcp('nocreate'));
-run =100;
+run =1000;
 N=64;   % 导频长度
 
-%Np=2;
-SNR=[2,4,6,8,10,12];
-%var=1./(Np*10.^(SNR./10));
+SNR=[4,6,8,10,12,14,16];
 
 BER=zeros(1,size(SNR,2));
 BLER=zeros(1,size(SNR,2));
 BER_e=zeros(1,size(SNR,2));
 BLER_e=zeros(1,size(SNR,2));
-    ber = comm.ErrorRate;
-R=[1 0;
-   0 1];
+ber = comm.ErrorRate;
 
-%p=parpool(6);
-for i=1:1
+p=parpool(6);
+parfor i=1:length(SNR)
     a=0;
     t=0; 
     data=[];
@@ -25,7 +21,7 @@ for i=1:1
     for n =1:run
 
         %Alice发射信号并在信道中传播
-        [modSignal,noisedsignal,databits,h,g,noiseVar,a_small_inteval]=Alice(SNR(i),R,N);
+        [modSignal,noisedsignal,databits,h,g,noiseVar,a_small_inteval]=Alice(SNR(i),N);
 
         %Bob接收信号并解码
         rxbits=Bob(noisedsignal,noiseVar,h,a_small_inteval,N); 

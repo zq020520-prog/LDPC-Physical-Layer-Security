@@ -1,11 +1,6 @@
-function [modSignal,noisedsignal,databits,h,g,noiseVar,a_small_inteval,index]=Alice(SNR,R,N)
+function [modSignal,noisedsignal,databits,h,g,noiseVar,a_small_inteval,index]=Alice(SNR,N)
       
-            % h1= 1/sqrt(2)*(randn + 1i*randn);  
-            % g1= 1/sqrt(2)*(randn + 1i*randn); 
-            % 
-            % A=sqrt(R)*[h1;g1];
-            % h=A(1);
-            % g=A(2);
+
             h= 1/sqrt(2)*(randn + 1i*randn);  
             g= 1/sqrt(2)*(randn + 1i*randn); 
 
@@ -19,7 +14,7 @@ function [modSignal,noisedsignal,databits,h,g,noiseVar,a_small_inteval,index]=Al
             % 接收信号
             rx_a = h * pilot + noise_a;
             h_a = sum(rx_a .* conj(pilot)) / sum(abs(pilot).^2);
-            h_a=h;
+   
              CQI = abs(h_a)^2;
     
             [index,H]=choose_H(CQI);

@@ -17,22 +17,22 @@ function rxbits_e=Eve(modSignal,noiseVar,g,a_small_inteval_temp,N)
         rx_e = g * pilot + noise_e1;
         g_e = sum(rx_e .* conj(pilot)) / sum(abs(pilot).^2);
       
-        CQI = abs(g_e)^2;
-        index=calculate_interval(CQI);
-
-        %纠错方法二
-        e_small_inteval=calculate_small_inteval(index,CQI);
-
-        a_small_inteval=correct_data_channel(g,g_e,noiseVar,a_small_inteval_temp);
-
-        if a_small_inteval<4 && e_small_inteval>a_small_inteval+4 && index<10
-                        index=index+1;        
-         end
-         if a_small_inteval>3 && e_small_inteval<a_small_inteval-3 && index>1      
-                        index=index-1;         
-         end
-
-        %u=[index,index-1,index+1,index-2,index+2,index-3,index+3,index-3,index+3];
+        % CQI = abs(g_e)^2;
+        % index=calculate_interval(CQI);
+        % 
+        % %纠错方法二
+        % e_small_inteval=calculate_small_inteval(index,CQI);
+        % 
+        % a_small_inteval=correct_data_channel(g,g_e,noiseVar,a_small_inteval_temp);
+        % 
+        % if a_small_inteval<4 && e_small_inteval>a_small_inteval+4 && index<10
+        %                 index=index+1;        
+        %  end
+        %  if a_small_inteval>3 && e_small_inteval<a_small_inteval-3 && index>1      
+        %                 index=index-1;         
+        %  end
+        % 
+        % u=[index,index-1,index+1,index-2,index+2,index-3,index+3,index-3,index+3];
         u=[1,2,3,4,5,6,7,8,9,10];
         u = u(u > 0 & u < 11);
 
