@@ -1,5 +1,5 @@
 %%使用PEG算法生成QC_LDPC基矩阵
-function H_base=gen_H_base(m,g,dv)
+function H_base=generate_H_base(m,g,dv)
     
     
     h=zeros(m, g);
@@ -23,13 +23,13 @@ function H_base=gen_H_base(m,g,dv)
                 while(flag)
                       l=l+1;
                       h_row=h(row,:);
-                      if  length(row)==1
+                      if  isscalar(row)
                           col=find(h_row);
                       else
                           col=find(any(h_row(:, 1:g)));   %行搜索，寻找为1的列标
                       end
                       h_col=(h(:,col))';
-                      if  length(col)==1
+                      if  isscalar(col)
                           row1=find(h_col);
                       else
                           row1=find(any(h_col(:,1:m)));
